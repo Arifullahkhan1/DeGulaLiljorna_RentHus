@@ -1,0 +1,42 @@
+.logo{
+   /*  background-image: url(./../../public/Images/logo2.png);
+    width:auto;
+    height: 100vh;
+    background-position: center;
+    margin: 0; */
+}
+.title{
+    color: goldenrod;
+   text-align: center;
+}
+
+.package{
+    width: 11rem;
+    height:100px;
+    margin-left: 10px;
+    margin-top: 30px;
+    
+}
+.margintop{
+    margin-top: 10px;
+}
+
+.package-container{
+text-align: left;
+align-items: cente;
+margin-top: 20px;
+margin-left: 30px;
+
+}
+
+.package-container p{
+    color: goldenrod;
+    text-transform:uppercase;
+    text-shadow:1px 1px bisque;
+    margin-left: 30px;
+    align-items: center;
+    
+    
+
+}
+
