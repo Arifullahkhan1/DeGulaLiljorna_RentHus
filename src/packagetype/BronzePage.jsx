@@ -28,8 +28,8 @@ export default function BronzePage(props) {
             body: JSON.stringify({
                 customerName: customer.username,
                 customerAddress: customer.address,
-                cleaningDate: dValue,
-                cleaningTime: tValue,
+                cleaningDate: cleaningDate,
+                cleaningTime: cleaningTime,
                 customerId: customer.id,
                 cleanerId: cleanerId
             })
@@ -55,7 +55,18 @@ export default function BronzePage(props) {
 
             <form>
                 <p>CleaningDate</p>
-                
+                <input
+                    placeholder="CleaningDate..."
+                    onChange={(e) => setCleaningDate(e.target.value)}
+                    value={cleaningDate}
+                />
+
+                <p>CleaningTime</p>
+                <input
+                    placeholder="CleaningTime..."
+                    onChange={(e) => setCleaningTime(e.target.value)}
+                    value={cleaningTime}
+                />
                 <p>CleanerId</p>
                 <input
                     placeholder="CleanerId..."
