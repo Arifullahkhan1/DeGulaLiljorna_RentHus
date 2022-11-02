@@ -1,3 +1,4 @@
+import DatePage from "../component/DatePage";
 import  "./bookingslot.css";
 
 
@@ -34,8 +35,9 @@ return (
             <p>{user.customerAddress}</p>
             <p>{user.cleaningDate}</p>
             <p>{user.cleaningTime}</p>
-   
+          
        </div>
+      
         </div>
             <button className="button" onClick={() => handleDelete(user.id)}>Ta bort user</button>
     </div>

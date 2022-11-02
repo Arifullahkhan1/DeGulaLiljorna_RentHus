@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Register from "../servicepages/register/Register";
 import BookingSlots from "./BookingSlots";
+import DatePage from "../component/DatePage";
 import "./customer.css"
 
 
@@ -40,7 +41,7 @@ const Customer = (props) => {
     return (
         <div className="containe">
           {customers.map(user => <BookingSlots customer={customer}  key={user.id} user={user} setCustomers={setCustomers}/>)}
-             
+            
         </div>
     )
 

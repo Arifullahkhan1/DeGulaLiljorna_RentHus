@@ -1,0 +1,17 @@
+.time{
+    margin: 4px;
+    max-width: 10rem;
+    min-height: 10px;
+    background-color: #303132;
+    color: #CBB26A;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: medium;
+    color: aliceblue;
+}
+.react-time-picker__inputGroup__input:invalid {
+    background: #ff00005e;
+  }
+.invalid{
+    color: #ff0000;
+}
