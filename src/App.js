@@ -36,7 +36,7 @@ function App() {
         <Route path='/bookingSlots' element={<BookingSlots />}></Route>
         <Route path='/goldpackage' element={<GoldPage />}></Route>
         <Route path='/silverpackage' element={<SilverPage />}></Route>
-        <Route path='/bronzepackage' element={<BronzePage />}></Route>
+        <Route path='/bronzepackage' element={<BronzePage customer={customer} />}></Route>
         </Route>
     </Routes>
   </BrowserRouter>

@@ -47,8 +47,9 @@ const AddTodoForm = (props) => {
 
     return (
 
-        <div>
-            <h2>Add Todo Form</h2>
+      <div className="confirmorder">
+                 <h2>Bronze package</h2>
+                 <p>Price:1000 kr</p>
             <form>
                
                 <p>CustomerAddress</p>

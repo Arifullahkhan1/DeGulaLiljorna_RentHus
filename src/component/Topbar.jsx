@@ -1,7 +1,7 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { FaPinterestSquare } from 'react-icons/fa';
 import { BsFacebook,BsPinterest } from "react-icons/bs";
-import { AiFillFacebook, AiFillInstagram, AiFillSetting, AiFillTwitterSquare} from "react-icons/ai";
+import { AiFillFacebook, AiFillInstagram, AiFillSetting, AiFillTwitterSquare,AiOutlineUnorderedList} from "react-icons/ai";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./topbar.css";
 
@@ -38,9 +38,16 @@ export default function Topbar(props) {
 
         <nav className="topRight">
           {customer ? (
-            <Link className='link' to={"/setting"}>
-              <h1><AiFillSetting className='topIcon' /></h1>
-            </Link>
+                 <nav className="topRight">
+                    <Link className='link' to={"/setting"}>
+                        <i><AiFillSetting  className='topIcon' /></i>
+                    </Link>
+                
+                    <Link className='link' to={"/customer"}>
+                        <i><AiOutlineUnorderedList className='topIcon' /></i>
+                    </Link>
+                 </nav>
+
           ) : (
             <ul className="topList">
               <li className="topListItem">

@@ -37,7 +37,7 @@ return (
    
        </div>
         </div>
-            <button className="button" onClick={() => handleDelete(customer.id)}>Ta bort user</button>
+            <button className="button" onClick={() => handleDelete(user.id)}>Ta bort user</button>
     </div>
 )
 
