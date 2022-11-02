@@ -92,3 +92,24 @@ color: azure;
 box-shadow: 4px 4px #303132;
 
 }
+.input{
+    background-color: #958f8fce;
+    opacity: 0.6;
+    color: white;
+    padding: 5px;
+    border:none;
+    border-radius: 10px; 
+}
+input::placeholder {
+    color:#CBB26A;
+    opacity:1;
+  }
+  .reserveButton {
+    background-color: teal;
+    opacity: 0.6;
+    color: #CBB26A;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+  }

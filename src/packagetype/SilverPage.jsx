@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./GoldPage.css"
+import "./pagedesign.css"
 
 
-export default function BronzePage(props) {
+export default function SilverPage(props) {
 
-    const { customer } = props;
+    const { customer,typePackage,price } = props;
 
     const [cleaningDate, setCleaningDate] = useState("");
     const [cleaningTime, setCleaningTime] = useState("");
@@ -27,6 +27,8 @@ export default function BronzePage(props) {
             body: JSON.stringify({
                 customerName: customer.username,
                 customerAddress: customer.address,
+                typePackage:typePackage.typePackage,
+                price:price.price,
                 cleaningDate: cleaningDate,
                 cleaningTime: cleaningTime,
                 customerId: customer.id,
@@ -49,32 +51,32 @@ export default function BronzePage(props) {
     return (
 
         <div className="confirmorder">
-            <h2>Silver package</h2>
-            <p>Price:2000 kr</p>
+           <h2>{typePackage}</h2>
+            <p>Price: {price}kr</p>
 
             <form>
                 <p>CleaningDate</p>
-                <input
+                <input className="input"
                     placeholder="CleaningDate..."
                     onChange={(e) => setCleaningDate(e.target.value)}
                     value={cleaningDate}
                 />
 
                 <p>CleaningTime</p>
-                <input
+                <input className="input"
                     placeholder="CleaningTime..."
                     onChange={(e) => setCleaningTime(e.target.value)}
                     value={cleaningTime}
                 />
                 <p>CleanerId</p>
-                <input
+                <input className="input"
                     placeholder="CleanerId..."
                     onChange={(e) => setCleanerId(e.target.value)}
                     value={cleanerId}
                 />
             </form>
             <br /><br />
-            <button onClick={handleSave}>Reserve</button>
+            <button className="reserveButton"  onClick={handleSave}>Reserve</button>
 
         </div>
     )
