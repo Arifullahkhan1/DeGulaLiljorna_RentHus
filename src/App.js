@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Login from './servicepages/login/Login';
 import Topbar from './component/Topbar';
 import MainPage from './bookingcomponent/MainPage';
@@ -21,6 +20,15 @@ function App() {
   const [customer, setLoggedInCustomer] = useState(null);
   const typePackage = "";
   const price = "";
+
+
+  useEffect(()=>{
+   
+    let newcustomer= localStorage.getItem('customer');
+  
+    setLoggedInCustomer(JSON.parse(newcustomer));
+  
+  },[])
   return (
 
     <BrowserRouter>

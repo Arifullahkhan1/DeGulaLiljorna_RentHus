@@ -30,6 +30,7 @@ const Customer = (props) => {
             });
             let customers = await response.json();
             setCustomers(customers)
+             
             
         }
 

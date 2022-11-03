@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Login from "../login/Login";
+
 import "./register.css"
 
 export default function Register(props) {
@@ -10,7 +10,7 @@ export default function Register(props) {
   const [roles, setRoles] = useState(["USER"]);
   const [address, setAddress] = useState([""]);
 
-  const {setCustomers}=props;
+  // const {setCustomers}=props;
 
   const navigate=useNavigate();
 

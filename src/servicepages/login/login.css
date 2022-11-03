@@ -6,12 +6,7 @@
     margin-left: 40px;
     width: 15rem;
     justify-content: left;
-  /*   background: linear-gradient(
-      #1b101069,
-        #1b1010a2,
-        #1b101069
-      ),
-      url("../../../public/images/welcome.jpg"); */
+  
     background-size: cover;
   }
   

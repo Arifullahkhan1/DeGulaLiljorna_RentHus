@@ -101,6 +101,7 @@ export default function SilverPage(props) {
 
             <br /><br />
             <button className="reserveButton" onClick={handleSave}>Reserve</button>
+            <div className="pakage_info"> Our SILVER Package has been designed for residential maintenance. This package is ideal for good overall clean house, as our extensively trained staff look after the most trafficked spots in the house while ensuring a dust free residence all around. While setting up this package, it's your choice of having us use our regular products or if you are worried about harsh chemicals, we can use environmentally friendly products instead. This Package has our highly trained staff visit your home for a 3 and half hour visit and start at ONLY 2000kr per visit.</div>
 
         </div>
     )

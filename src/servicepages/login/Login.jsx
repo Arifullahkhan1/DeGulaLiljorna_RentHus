@@ -32,8 +32,8 @@ export default function Login(props) {
       response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/whoami?token=${token}`)
       let customer = await response.json();
       setLoggedInCustomer(customer);
-     
-      console.log("log från login",customer)
+      localStorage.setItem('customer',JSON.stringify(customer)); //save customer in localstorage
+      // console.log("log från login",customer)
       navigate('/customer');
  
      

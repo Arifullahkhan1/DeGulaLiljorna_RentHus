@@ -98,9 +98,11 @@ export default function GoldPage(props) {
                     value={cleanerId}
                 />
             </form>
-
             <br /><br />
             <button className="reserveButton" onClick={handleSave}>Reserve</button>
+            <div className="pakage_info"> Our GOLD Package has been created for a deep, detailed clean of your home. This package is prepared to leave a perfectly clean home from top to bottom. The Gold Service has all the great things from our SILVER Service but are enhanced. Our uniquely trained staff will focus on a more detailed cleaning of items all around the house. While setting up this service, you will have the choice of having us use our regular products or environmentally friendly products instead. This Package has our friendly trained staff visit your home for a 5 and half hour visit, 50% longer than our SILVER service and start at ONLY 3000kr per visit </div>
+
+            
 
         </div>
     )

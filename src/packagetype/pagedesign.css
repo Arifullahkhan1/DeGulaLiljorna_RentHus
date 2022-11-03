@@ -1,48 +1,84 @@
+.confirmorder {
+  text-align: left;
+  align-items: center;
+  color: #cbb26a;
+  margin-left: 10px;
+}
 
-.confirmorder{
-    text-align: left;
-    align-items: center;
-    color: #CBB26A;
-    margin-left: 10px;
-    }
-
-.input{
-    background-color: #958f8fce;
-    opacity: 0.6;
-    color: white;
-    padding: 5px;
-    border:none;
-    border-radius: 10px; 
+.input {
+  background-color: #958f8fce;
+  opacity: 0.6;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
 }
 input::placeholder {
-    color:#CBB26A;
-    opacity:1;
-  }
-  .reserveButton {
-    background-color: teal;
-    opacity: 0.6;
-    color: #CBB26A;
-    padding: 5px;
-    border: none;
-    border-radius: 10px;
-    text-align: center;
-  }
+  color: #cbb26a;
+  opacity: 1;
+}
+.reserveButton {
+  background-color: teal;
+  opacity: 0.6;
+  color: #cbb26a;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
 
-  .time{
-    margin: 4px;
-    max-width: 10rem;
-    min-height: 10px;
-    background-color: #303132;
-    color: #CBB26A;
-    border-radius: 10px;
-    font-weight: bold;
-    border: none;
-    font-size: medium;
-    align-items: center;
+.time {
+  margin: 4px;
+  max-width: 10rem;
+  min-height: 10px;
+  background-color: #303132;
+  color: #cbb26a;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  font-size: medium;
+  align-items: center;
+}
+.pakage_info {
+  display: flex;
+
+  height: 350px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 690px;
+  margin-top: -200px;
+  padding: 5px;
+  font-size: large;
+  font-weight: 400;
+  background-color: #434446;
+  color: #cbb26a;
+}
+.about {
+  margin-top: 300px !important;
+}
+.contact {
+  width: 800px  !important;
+  margin-left: 600px !important;
+  
+  margin-top: 300px !important;
+  padding-left: 240px !important;
+  
+ 
+  
+}
+.list{
+  list-style-type: none;
+}
+.address{
+  margin-left: -315px;
+}
+.callus{
+  margin-left: 5px;
 }
 .react-time-picker__inputGroup__input:invalid {
-    background: #ff00005e;
-  }
-.invalid{
-    color: #ff0000;
+  background: #ff00005e;
+}
+.invalid {
+  color: #ff0000;
 }
