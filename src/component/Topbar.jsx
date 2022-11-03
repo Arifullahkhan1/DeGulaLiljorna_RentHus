@@ -1,13 +1,13 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { FaPinterestSquare } from 'react-icons/fa';
-import { BsFacebook,BsPinterest } from "react-icons/bs";
+// import { BsFacebook,BsPinterest } from "react-icons/bs";
 import { AiFillFacebook, AiFillInstagram, AiFillSetting, AiFillTwitterSquare,AiOutlineUnorderedList} from "react-icons/ai";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./topbar.css";
 
 export default function Topbar(props) {
   const {customer,setLoggedInCustomer}=props
-  const navigate=useNavigate();
+  // const navigate=useNavigate();
   const handleLogedOut=()=>{
     localStorage.clear(); // clear localStoage from save object
     setLoggedInCustomer(null)
