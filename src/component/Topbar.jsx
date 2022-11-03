@@ -8,6 +8,10 @@ import "./topbar.css";
 export default function Topbar(props) {
   const {customer,setLoggedInCustomer}=props
   const navigate=useNavigate();
+  const handleLogedOut=()=>{
+    localStorage.clear(); // clear localStoage from save object
+    setLoggedInCustomer(null)
+  }
  
   return (
     <>
@@ -28,9 +32,7 @@ export default function Topbar(props) {
             <li className="topListItem"><Link className="link" to={"/contact"}>Contact</Link></li>
             <li className="topListItem"><Link className="link" to={"/about"}>About</Link></li>
             {customer && <li className="topListItem">
-              <Link className="link" to={"/"} onClick={() => {
-                setLoggedInCustomer(null)
-                }}>Logout</Link>
+              <Link className="link" to={"/"} onClick={handleLogedOut}>Logout</Link>
               </li>}
          
           </ul>
