@@ -1,22 +1,4 @@
-.card{
-    max-width: 15rem;
-    margin: 10px;
-    color: #272316;
-    margin-left: 10px;
-    background-color: #CBB26A;
-    border-radius: 10px;
-    box-shadow: 4px 4px #60532a;
-    font-size: large;
-    font-weight:bold;
-}
-.card span{
-   text-align: right;
-    color: #272316;
-}
-.card li{
-    text-align: left;
-    align-items: center;
-}
+
 .confirmorder{
     text-align: left;
     align-items: center;
@@ -24,74 +6,6 @@
     margin-left: 10px;
     }
 
-.insert{
-    display: flex;
-    flex-direction: column;
-
-}
-.insert input{
-    margin: 4px;
-    max-width: 10rem;
-    min-height: 10px;
-    background-color: #303132;
-    color: #CBB26A;
-}
-
- .specificAnimals .info {
-    display: flex;
-    flex-direction: row;   
-    align-items:center ; 
-    justify-content: space-between;
-    margin: 6px;
-
-} 
-
-
-.specificAnimals .img-container{
-    display: flex;
-    flex-direction: raw;
-    align-items: center;
-    width:100%;
-    
-    justify-content: center;
-}
-
-.specificAnimals .img-container img{
-    
-    width: 30rem;
-    height: 15rem;
-    margin: 4px;
-    
-   
-}
-.specificAnimals .img-container span{
-    display: flex;
-    flex-direction: column;
-    font-size: small;
-    font-weight:normal;
-    color: #272323;
-    text-align: center;
-    
-   
-}
-.specificAnimals p{
-    display: flex;
-    flex-direction:column;
-    font-size: large;
-    font-weight:bold ;
-   
-
-}
-
-.specificAnimals .button{
-border-radius:4px;
-width: 10rem;
-height: 3rem;
-background-color: #a8adad;
-color: azure;
-box-shadow: 4px 4px #303132;
-
-}
 .input{
     background-color: #958f8fce;
     opacity: 0.6;
@@ -113,3 +27,22 @@ input::placeholder {
     border-radius: 10px;
     text-align: center;
   }
+
+  .time{
+    margin: 4px;
+    max-width: 10rem;
+    min-height: 10px;
+    background-color: #303132;
+    color: #CBB26A;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    font-size: medium;
+    align-items: center;
+}
+.react-time-picker__inputGroup__input:invalid {
+    background: #ff00005e;
+  }
+.invalid{
+    color: #ff0000;
+}

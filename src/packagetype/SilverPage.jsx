@@ -1,15 +1,22 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import DatePicker from "react-date-picker";
+import { useNavigate } from "react-router-dom";
+import TimePicker from "react-time-picker";
 import "./pagedesign.css"
 
 
 export default function SilverPage(props) {
 
-    const { customer,typePackage,price } = props;
+    const { customer, typePackage, price } = props;
 
-    const [cleaningDate, setCleaningDate] = useState("");
-    const [cleaningTime, setCleaningTime] = useState("");
+    const [cleaningDate, setCleaningDate] = useState(new Date());
+    const [cleaningTime, setCleaningTime] = useState("08:00");
     const [cleanerId, setCleanerId] = useState("");
+
+    const minValue = new Date();
+    const maxValue = new Date("12/31/2023 04:00 PM");
+    const minTValue = "07:59";
+    const maxTValue = "16:00";
 
     const navigate = useNavigate();
 
@@ -27,8 +34,8 @@ export default function SilverPage(props) {
             body: JSON.stringify({
                 customerName: customer.username,
                 customerAddress: customer.address,
-                typePackage:typePackage.typePackage,
-                price:price.price,
+                typePackage: typePackage,
+                price: price,
                 cleaningDate: cleaningDate,
                 cleaningTime: cleaningTime,
                 customerId: customer.id,
@@ -47,27 +54,43 @@ export default function SilverPage(props) {
 
     }
 
+    const handleDate = (e) => {
+        if (e <= minTValue) {
+            return (<div className="invalid">invalid time</div>);
+        }
+        if (e >= maxTValue) {
+            return (<div className="invalid" >invalid time</div>);
+        }
+        else {
+            return (<div>{e}</div>);
+        }
+    }
+
 
     return (
 
         <div className="confirmorder">
-           <h2>{typePackage}</h2>
+            <h2>{typePackage}</h2>
             <p>Price: {price}kr</p>
 
             <form>
                 <p>CleaningDate</p>
-                <input className="input"
-                    placeholder="CleaningDate..."
-                    onChange={(e) => setCleaningDate(e.target.value)}
+                <DatePicker
+                    onChange={setCleaningDate}
                     value={cleaningDate}
+                    minDate={minValue}
+                    maxDate={maxValue}
+                    format="yyyy-MM-dd"
                 />
+                <div>Date: {cleaningDate.toDateString()}</div>
 
                 <p>CleaningTime</p>
-                <input className="input"
-                    placeholder="CleaningTime..."
-                    onChange={(e) => setCleaningTime(e.target.value)}
+                <TimePicker
+                    onChange={setCleaningTime}
                     value={cleaningTime}
+                    format="hh:mm"
                 />
+                <p>Time: {handleDate(cleaningTime)}</p>
                 <p>CleanerId</p>
                 <input className="input"
                     placeholder="CleanerId..."
@@ -75,8 +98,9 @@ export default function SilverPage(props) {
                     value={cleanerId}
                 />
             </form>
+
             <br /><br />
-            <button className="reserveButton"  onClick={handleSave}>Reserve</button>
+            <button className="reserveButton" onClick={handleSave}>Reserve</button>
 
         </div>
     )

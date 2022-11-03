@@ -45,6 +45,7 @@ export default function DatePage() {
      
          <DatePicker
          onChange={setDValue}
+         format="yyyy-mm-dd"
          value={dValue}
          minDate={minValue}
          maxDate={maxValue}
