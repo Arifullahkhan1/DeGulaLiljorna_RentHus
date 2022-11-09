@@ -7,19 +7,20 @@ import Register from './servicepages/register/Register';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Logout from './Pages/Logout';
+// import Logout from './Pages/Logout';
 import Contact from './Pages/Contact';
 import BookingSlots from './bookingcomponent/BookingSlots';
 import Customer from './bookingcomponent/Customer';
 import GoldPage from './packagetype/GoldPage';
 import SilverPage from './packagetype/SilverPage';
 import BronzePage from './packagetype/BronzePage';
+// import Setting from './servicepages/setting/Setting';
 
 function App() {
 
   const [customer, setLoggedInCustomer] = useState(null);
-  const typePackage = "";
-  const price = "";
+  /* const typePackage = "";
+  const price = ""; */
 
 
   useEffect(()=>{
@@ -35,7 +36,7 @@ function App() {
       <Routes>
 
         <Route path='/' element={<Topbar customer={customer} setLoggedInCustomer={setLoggedInCustomer} />}>
-          <Route index element={<MainPage customer={customer} />}></Route>
+          <Route index element={<MainPage  />}></Route>
           <Route path='/login' element={<Login setLoggedInCustomer={setLoggedInCustomer} />}></Route>
           <Route path='/register' element={<Register />}></Route>
           <Route path='/home' element={<Home />}></Route>
@@ -44,6 +45,7 @@ function App() {
           <Route path='/mainpage' element={<MainPage />}></Route>
           <Route path='/customer' element={<Customer customer={customer} />}></Route>
           <Route path='/bookingSlots' element={<BookingSlots />}></Route>
+          {/* <Route path='/setting' element={<Setting />}></Route> */}
           <Route path='/goldpackage' element={<GoldPage
             customer={customer}
             typePackage="GoldPackage"

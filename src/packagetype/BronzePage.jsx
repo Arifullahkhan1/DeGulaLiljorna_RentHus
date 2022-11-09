@@ -1,8 +1,11 @@
 import { useState } from "react";
-import DatePicker from "react-date-picker";
+// import DatePicker from "react-date-picker";
 import { useNavigate } from "react-router-dom";
 import TimePicker from "react-time-picker";
 import "./pagedesign.css"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 
 export default function BronzePage(props) {
@@ -13,10 +16,8 @@ export default function BronzePage(props) {
     const [cleaningTime, setCleaningTime] = useState("08:00");
     const [cleanerId, setCleanerId] = useState("");
 
-    const minValue = new Date();
-    const maxValue = new Date("12/31/2023 04:00 PM");
-    const minTValue = "07:59";
-    const maxTValue = "16:00";
+    const minTime = "07:59";
+    const maxTime = "16:00";
 
     const navigate = useNavigate();
 
@@ -55,10 +56,10 @@ export default function BronzePage(props) {
     }
 
     const handleDate = (e) => {
-        if (e <= minTValue) {
+        if (e <= minTime) {
             return (<div className="invalid">invalid time</div>);
         }
-        if (e >= maxTValue) {
+        if (e >= maxTime) {
             return (<div className="invalid" >invalid time</div>);
         }
         else {
@@ -70,34 +71,47 @@ export default function BronzePage(props) {
     return (
 
         <div className="confirmorder">
-            <h2>{typePackage}</h2>
-            <p>Price: {price}kr</p>
+      <h2>{typePackage}</h2>
+      <span>Price: {price}kr</span>
 
-            <form>
-                <p>CleaningDate</p>
-                <DatePicker
-                    onChange={setCleaningDate}
-                    value={cleaningDate}
-                    minDate={minValue}
-                    maxDate={maxValue}
-                    format="yyyy-MM-dd"
-                />
-                <div>Date: {cleaningDate.toDateString()}</div>
+      <form>
+        <div>CleaningDate</div>
+        <DatePicker
+          selected={cleaningDate}
+          onChange={(date) => setCleaningDate(date)}
+          value={cleaningDate}
+          minDate={new Date()}
+          maxDate={new Date("12/31/2022")}
+          filterDate={(date) => date.getDay() !== 0}
+          dateFormat="yyyy/MM/dd"
 
-                <p>CleaningTime</p>
-                <TimePicker
-                    onChange={setCleaningTime}
+          /* showYearDropdown
+                    scrollableYearDropdown */
+        />
+        <div>Date: {cleaningDate.toDateString()}</div>
+
+        <div>CleaningTime</div>
+
+        <TimePicker
+          /* onChange={setCleaningTime}
+          value={cleaningTime}
+          mode="time"
+          timeFormat="HH:mm"
+          minTime="07:75"
+          maxTime="16:00" */
+          onChange={setCleaningTime}
                     value={cleaningTime}
-                    format="hh:mm"
-                />
-                <p>Time: {handleDate(cleaningTime)}</p>
-                <p>CleanerId</p>
-                <input className="input"
-                    placeholder="CleanerId..."
-                    onChange={(e) => setCleanerId(e.target.value)}
-                    value={cleanerId}
-                />
-            </form>
+                    format="HH:mm"
+        />
+        <p>Time: {handleDate(cleaningTime)}</p>
+        <div>CleanerId</div>
+        <input
+          className="input"
+          placeholder="CleanerId..."
+          onChange={(e) => setCleanerId(e.target.value)}
+          value={cleanerId}
+        />
+      </form>
 
             <br /><br />
             <button className="reserveButton" onClick={handleSave}>Reserve</button>

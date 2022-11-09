@@ -11,6 +11,8 @@ align-items: left;
     border-radius: 10px;
     width: 20rem;
     height: auto;
+    padding-left: 20px;
+    padding-top: 10px;
    
 }
 .text{
@@ -20,12 +22,14 @@ align-items: left;
     margin-top: 20px;
     width:10rem;
     cursor: pointer;
-    background-color: lightcoral;
+    background-color: rgb(181, 9, 9);
     opacity: 0.6;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 10px;
     margin-left: 5rem;
+    border: 3px gray solid;
+    font-size: large;
     
 }

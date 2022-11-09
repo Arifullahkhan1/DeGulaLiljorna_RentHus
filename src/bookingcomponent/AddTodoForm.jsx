@@ -1,11 +1,11 @@
-import { useState } from "react";
+/* import { useState } from "react";
 
 const AddTodoForm = (props) => {
 
     const { setTodos, customer} = props;
 
     /* const [customerName, setCustomerName] = useState("") */
-    const [customerAddress, setCustomerAddress] = useState("");
+  /*   const [customerAddress, setCustomerAddress] = useState("");
     const [cleaningDate, setCleaningDate] = useState("");
     const [cleaningTime, setCleaningTime] = useState("");
     const [cleanerId, setCleanerId] = useState("");
@@ -85,5 +85,6 @@ const AddTodoForm = (props) => {
         </div>
     )
 }
-
-export default AddTodoForm;
+ */
+/* export default AddTodoForm;
+ */

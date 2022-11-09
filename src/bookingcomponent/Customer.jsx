@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
-import Register from "../servicepages/register/Register";
 import BookingSlots from "./BookingSlots";
-import DatePage from "../component/DatePage";
 import "./customer.css"
 
 
+
 const Customer = (props) => {
-   
+  
     const [customers, setCustomers] = useState([{ 
          id: 0,
          username:"username",
          password:"password",
          roles:["USER"],
         }])
-
-
         const { customer } = props;
+
+    /*  useEffect(()=>{
+        
+          
+  let ourCustomers = localStorage.getItem('customers');
+    setCustomers(JSON.parse(ourCustomers)); 
+    
+            
+
+ },[]) */
+       
+        
+
+       
    
     useEffect(() => {
+        if(localStorage.getItem('customers')!==null){
+            setCustomers(JSON.parse(localStorage.getItem('customers')));
+    return;
+            } 
 
         const fetchCustomers = async () => {
 
@@ -29,15 +44,20 @@ const Customer = (props) => {
             
             });
             let customers = await response.json();
-            setCustomers(customers)
-             
-            
-        }
+     
+            setCustomers(customers);
+            localStorage.setItem('customers',JSON.stringify(customers));
+           
+ }
 
         fetchCustomers();
-
+     
+        
 
     }, [])
+   
+   
+
 
     return (
         <div className="containe">

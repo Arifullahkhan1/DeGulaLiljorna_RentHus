@@ -4,7 +4,7 @@ export default async function Logout(props) {
     const {setLoggedInCustomer}=props
    
     const handleLogedOut=()=>{
-      localStorage.clear(); // clear localStoage from save object
+      localStorage.removeItem('customer'); // clear localStoage from save object
       setLoggedInCustomer(null)
     }
   return (

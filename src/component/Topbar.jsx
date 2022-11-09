@@ -15,7 +15,7 @@ export default function Topbar(props) {
  
   return (
     <>
-    <h1>{ console.log("från topbar", customer)}</h1>
+    
     <header>
       <div className="top">
         <nav className="topLeft">
@@ -46,7 +46,8 @@ export default function Topbar(props) {
                     </Link>
                 
                     <Link className='link' to={"/customer"}>
-                        <i><AiOutlineUnorderedList className='topIcon' /></i>
+                       {/* <i><AiOutlineUnorderedList className='topIcon' /></i> */}
+                       <button>History</button>
                     </Link>
                  </nav>
 
