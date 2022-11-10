@@ -4,3 +4,16 @@
     text-align: left;
 
 }
+.msg{
+     margin-left: 20px;
+   animation:blinkingText 0.8s infinite; 
+   
+    
+}
+@keyframes blinkingText{
+	0%{		color:#CBB26A;	}
+	49%{	color: transparent;	}
+	50%{	color: #CBB26A;		}
+	99%{	color:transparent;	}
+	100%{	color: #CBB26A;	}
+} 

@@ -43,8 +43,8 @@
   .loginButton {
     margin-top: 20px;
     cursor: pointer;
-    background-color: lightcoral;
-    opacity: 0.6;
+    background-color:#CBB26A;
+    font-weight: bold;
     color: white;
     padding: 10px;
     border: none;
@@ -52,6 +52,7 @@
     text-align: center;
    
   }
+  .loginButton:hover {background-color:#f9be0a}
   
   .loginRegisterButton {
     position: absolute;

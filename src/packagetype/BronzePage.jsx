@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import DatePicker from "react-date-picker";
+
 import { useNavigate } from "react-router-dom";
 import TimePicker from "react-time-picker";
 import "./pagedesign.css"
@@ -85,25 +85,19 @@ export default function BronzePage(props) {
           filterDate={(date) => date.getDay() !== 0}
           dateFormat="yyyy/MM/dd"
 
-          /* showYearDropdown
-                    scrollableYearDropdown */
+          
         />
         <div>Date: {cleaningDate.toDateString()}</div>
 
         <div>CleaningTime</div>
 
         <TimePicker
-          /* onChange={setCleaningTime}
-          value={cleaningTime}
-          mode="time"
-          timeFormat="HH:mm"
-          minTime="07:75"
-          maxTime="16:00" */
+          
           onChange={setCleaningTime}
                     value={cleaningTime}
                     format="HH:mm"
         />
-        <p>Time: {handleDate(cleaningTime)}</p>
+        <span>Time: {handleDate(cleaningTime)}</span>
         <div>CleanerId</div>
         <input
           className="input"

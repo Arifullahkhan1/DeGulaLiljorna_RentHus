@@ -19,13 +19,17 @@ input::placeholder {
   opacity: 1;
 }
 .reserveButton {
-  background-color: teal;
-  opacity: 0.6;
-  color: #cbb26a;
-  padding: 5px;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
+  background-color: #CBB26A;
+    border:#CBB26A inset 5px ;
+    color: rgba(0, 0, 0, 0.953);
+    
+}
+.reserveButton:hover {background-color:#f8be0e}
+
+.reserveButton:active {
+  background-color:#CBB26A;
+  box-shadow: 0 5px #f8be0e;
+  transform: translateY(4px);
 }
 
 .time {
@@ -48,7 +52,7 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   margin-left:500px;
-  margin-top: -250px;
+  margin-top: -190px;
   padding-left: 15px;
   font-size: large;
   font-weight: 400;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-//import DatePicker from "react-date-picker";
+
 import { useNavigate } from "react-router-dom";
 import TimePicker from "react-time-picker";
 import "./pagedesign.css";
@@ -7,18 +7,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function GoldPage(props) {
-  // Formate the date function *****************
-
-
-
   const { customer, typePackage, price } = props;
 
   const [cleaningDate, setCleaningDate] = useState(new Date());
   const [cleaningTime, setCleaningTime] = useState("08:00");
   const [cleanerId, setCleanerId] = useState("");
 
-    const minTime = "07:59";
-    const maxTime = "16:00";
+  const minTime = "07:59";
+  const maxTime = "16:00";
 
   const navigate = useNavigate();
 
@@ -60,17 +56,15 @@ export default function GoldPage(props) {
   };
 
   const handleDate = (e) => {
-        if (e <= minTime) {
-            return (<div className="invalid">invalid time</div>);
-        }
-        if (e >= maxTime) {
-            return (<div className="invalid" >invalid time</div>);
-        }
-        else {
-            return (<div>{e}</div>);
-        }
+    if (e <= minTime) {
+      return <div className="invalid">invalid time</div>;
     }
- 
+    if (e >= maxTime) {
+      return <div className="invalid">invalid time</div>;
+    } else {
+      return <div>{e}</div>;
+    }
+  };
 
   return (
     <div className="confirmorder">
@@ -87,26 +81,17 @@ export default function GoldPage(props) {
           maxDate={new Date("12/31/2022")}
           filterDate={(date) => date.getDay() !== 0}
           dateFormat="yyyy/MM/dd"
-
-          /* showYearDropdown
-                    scrollableYearDropdown */
         />
         <div>Date: {cleaningDate.toDateString()}</div>
 
         <div>CleaningTime</div>
 
         <TimePicker
-          /* onChange={setCleaningTime}
-          value={cleaningTime}
-          mode="time"
-          timeFormat="HH:mm"
-          minTime="07:75"
-          maxTime="16:00" */
           onChange={setCleaningTime}
-                    value={cleaningTime}
-                    format="HH:mm"
+          value={cleaningTime}
+          format="HH:mm"
         />
-        <p>Time: {handleDate(cleaningTime)}</p>
+        <span>Time: {handleDate(cleaningTime)}</span>
         <div>CleanerId</div>
         <input
           className="input"
