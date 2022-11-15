@@ -48,16 +48,14 @@
   .registerButton {
     margin-top: 20px;
     cursor: pointer;
-    background-color:#CBB26A;
+    background-color: teal;
     opacity: 0.6;
-    color: rgb(255, 255, 255);
+    color: white;
     padding: 10px;
     border: none;
     border-radius: 10px;
     text-align: center;
-    font-weight: bold;
   }
-  .registerButton:hover {background-color:#f80ed9}
   
   .registerLoginButton {
     position: absolute;

@@ -67,7 +67,6 @@
     text-decoration: none;
     color: #CBB26A;
   }
-  .link:hover{color: #f8be0e;}
   .logo1{
     height:100vh;
     display: flex;
@@ -82,16 +81,3 @@
       url("../../public/images/welcome.jpg");
     background-size: cover;
   }
-  .history{
-    background-color: #CBB26A;
-    border:#CBB26A inset 5px ;
-    color: rgba(0, 0, 0, 0.953);
-    
-  }
-  .history:hover {background-color:#f8be0e}
-
-.history:active {
-  background-color:#CBB26A;
-  box-shadow: 0 5px #f8be0e;
-  transform: translateY(4px);
-}
