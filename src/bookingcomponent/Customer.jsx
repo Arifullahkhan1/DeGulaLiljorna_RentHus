@@ -1,51 +1,76 @@
 import { useEffect, useState } from "react";
-import Register from "../servicepages/register/Register";
 import BookingSlots from "./BookingSlots";
-import DatePage from "../component/DatePage";
-import "./customer.css"
-
+import "./customer.css";
 
 const Customer = (props) => {
-   
-    const [customers, setCustomers] = useState([{ 
-         id: 0,
-         username:"username",
-         password:"password",
-         roles:["USER"],
-        }])
+  const [customers, setCustomers] = useState([
+ {
+      id: 0,
+      username: "username",
+      password: "password",
+      roles: ["USER"],
+    }, 
+    
+    
+  ]);
+     
+ const {customer}=props
 
 
-        const { customer } = props;
-   
-    useEffect(() => {
 
-        const fetchCustomers = async () => {
 
-            let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/customer/${customer.id}`, {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${customer.token}`
-                }
-            
-            });
-            let customers = await response.json();
-            setCustomers(customers)
-             
-            
+
+  useEffect(() => {
+
+    if (localStorage.getItem("customers") !== null && localStorage.getItem("customers")?.length > 0 ) {
+      setCustomers(JSON.parse(localStorage.getItem("customers")));
+      }
+     
+  
+   const fetchCustomers = async () => {
+      let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/customer/${customer?.id}`,
+        {
+         
+          headers: {
+            method: "GET",
+            Authorization: `Bearer ${customer?.token}`
+          }
         }
-
+      );
+      let customers = [];
+      try{
+      customers = await response.json();
+      setCustomers(customers);
+      localStorage.setItem("customers", JSON.stringify(customers)); 
+    }
+     catch(error){
+      console.log(error);     }
+    
+    
+    };
         fetchCustomers();
 
+        
+     },[customer]);
 
-    }, [])
+    // console.log("the customers: ",customers);
+  return (
+    <>
+    <div className="containe">
+      {customers.length > 0 ? customers.map((user) => (
+        <BookingSlots
+          customer={customer}
+          key={user.id}
+          user={user}
+          setCustomers={setCustomers}
+        />
+      )):  <h1 className="msg">Its Empty</h1> }
+    </div>
+  
 
-    return (
-        <div className="containe">
-          {customers.map(user => <BookingSlots customer={customer}  key={user.id} user={user} setCustomers={setCustomers}/>)}
-            
-        </div>
-    )
-
-} 
+  
+    </>
+  );
+};
 
 export default Customer;

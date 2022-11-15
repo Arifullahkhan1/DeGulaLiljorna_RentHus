@@ -2,7 +2,8 @@
   text-align: left;
   align-items: center;
   color: #cbb26a;
-  margin-left: 10px;
+  margin-left: 150px;
+  margin-top: 200px;
 }
 
 .input {
@@ -18,13 +19,17 @@ input::placeholder {
   opacity: 1;
 }
 .reserveButton {
-  background-color: teal;
-  opacity: 0.6;
-  color: #cbb26a;
-  padding: 5px;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
+  background-color: #CBB26A;
+    border:#CBB26A inset 5px ;
+    color: rgba(0, 0, 0, 0.953);
+    
+}
+.reserveButton:hover {background-color:#f8be0e}
+
+.reserveButton:active {
+  background-color:#CBB26A;
+  box-shadow: 0 5px #f8be0e;
+  transform: translateY(4px);
 }
 
 .time {
@@ -43,30 +48,30 @@ input::placeholder {
   display: flex;
 
   height: 350px;
-  width: 500px;
+  width: 550px;
   justify-content: center;
   align-items: center;
-  margin-left: 690px;
-  margin-top: -200px;
-  padding: 5px;
+  margin-left:500px;
+  margin-top: -190px;
+  padding-left: 15px;
   font-size: large;
   font-weight: 400;
   background-color: #434446;
   color: #cbb26a;
 }
 .about {
-  margin-top: 300px !important;
+  margin-top: 360px !important;
+  margin-left: 700px;
 }
 .contact {
   width: 800px  !important;
   margin-left: 600px !important;
   
-  margin-top: 300px !important;
+  margin-top: 360px !important;
   padding-left: 240px !important;
   
  
-  
-}
+  }
 .list{
   list-style-type: none;
 }
@@ -82,3 +87,4 @@ input::placeholder {
 .invalid {
   color: #ff0000;
 }
+

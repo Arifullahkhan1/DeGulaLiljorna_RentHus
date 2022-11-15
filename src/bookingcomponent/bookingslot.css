@@ -11,6 +11,8 @@ align-items: left;
     border-radius: 10px;
     width: 20rem;
     height: auto;
+    padding-left: 20px;
+    padding-top: 10px;
    
 }
 .text{
@@ -18,14 +20,22 @@ align-items: left;
 }
 .button{
     margin-top: 20px;
-    width:10rem;
+    width:20rem;
     cursor: pointer;
-    background-color: lightcoral;
+    background-color:  rgb(181, 9, 9);
     opacity: 0.6;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 10px;
-    margin-left: 5rem;
+    border: 2px gray solid;
+    font-size: large;
     
+}
+.button:hover {background-color:rgb(237,0,0)}
+
+.button:active {
+  background-color:rgb(237, 0, 0);
+  box-shadow: 0 5px #f8be0e;
+  transform: translateY(4px);
 }
