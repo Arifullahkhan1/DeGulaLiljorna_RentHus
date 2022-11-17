@@ -1,14 +1,14 @@
 import "./bookingslot.css";
 
 //mattiral ui class
-import FormControlLabel from "@mui/material/FormControlLabel";
+
 import { useState, useRef } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
-import Switch from "@mui/material/Switch";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -24,13 +24,11 @@ const style = {
 //****** */
 
 export default function BookingSlots(props) {
-  const { user, setCustomers, customer} = props;
- 
-
-  //matrialUl conts *****************
-  const [state, setState] = useState({
-    gilad: true,
-  });
+  const { user, setCustomers, customer } = props;
+  const current = new Date();
+  const date = `${current.getFullYear()}-${
+    current.getMonth() + 1
+  }-${current.getDate()}`;
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -40,14 +38,7 @@ export default function BookingSlots(props) {
   const [customerName, setCustomerName] = useState(user.customerName);
   const [customerAddress, setCustomerAddress] = useState(user.customerAddress);
   const refClose = useRef(null);
-  //*************************** */
-
-  /* const handleChange = (event) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked,
-    });
-  }; */
+  //***************************
 
   const refreshBookings = async () => {
     let response = await fetch(
@@ -60,7 +51,7 @@ export default function BookingSlots(props) {
     );
     let customers = await response.json();
     setCustomers(customers);
-  }
+  };
 
   const handleDelete = async (id) => {
     localStorage.removeItem("customers");
@@ -70,12 +61,12 @@ export default function BookingSlots(props) {
         Authorization: `Bearer ${customer.token}`,
       },
     });
-    
+
     refreshBookings();
   };
-  
+
   // Declare and call of put
-  /* const handleUpdate = async (id) => {
+  const handleUpdate = async (id) => {
     refClose.current.click();
 
     await fetch(`${process.env.REACT_APP_BASE_URL}/api/bookingslot/${id}`, {
@@ -93,38 +84,43 @@ export default function BookingSlots(props) {
     });
 
     refreshBookings();
-  }; */
+  };
 
   const handleSatisfying = async (id) => {
-    
-    await fetch(`${process.env.REACT_APP_BASE_URL}/api/bookingslot/rate/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${customer.token}`,
-      },
-      body: JSON.stringify({
-        status: "SATISFYING"
-      }),
-    });
+    await fetch(
+      `${process.env.REACT_APP_BASE_URL}/api/bookingslot/rate/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${customer.token}`,
+        },
+        body: JSON.stringify({
+          status: "SATISFYING",
+        }),
+      }
+    );
 
     refreshBookings();
   };
 
   const handleUnsatisfying = async (id) => {
-    await fetch(`${process.env.REACT_APP_BASE_URL}/api/bookingslot/rate/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${customer.token}`,
-      },
-      body: JSON.stringify({
-        status: "NOT_SATISFYING"
-      }),
-    });
+    await fetch(
+      `${process.env.REACT_APP_BASE_URL}/api/bookingslot/rate/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${customer.token}`,
+        },
+        body: JSON.stringify({
+          status: "NOT_SATISFYING",
+        }),
+      }
+    );
 
     refreshBookings();
-  }
+  };
 
   return (
     <div className="container">
@@ -136,98 +132,129 @@ export default function BookingSlots(props) {
           <p>Time: {user.cleaningTime}</p>
           <p>Type: {user.typePackage}</p>
           <p>Price: {user.price} kr</p>
-        
         </div>
+
         <div className="dropdown">
-          {user.status === "SATISFYING" ? (
+          {user.cleaningDate >= date ? (
+            <div>no reating</div>
+          ) : user.status === "NOT_RATED" || user.status === null ? (
             <div>
-              <button className="dropdown-btn-s">Satisfying</button>
+              <button className="dropdown-btn">Rate This Cleaning</button>
               <div className="dropdown-content">
-                <button className="s-button" onClick={() =>handleSatisfying(user.id)}>Satisfying</button>
-                <button className="u-button" onClick={() =>handleUnsatisfying(user.id)}>Not satisfying</button>
+                <button
+                  className="s-button"
+                  onClick={() => handleSatisfying(user.id)}
+                >
+                  Satisfying
+                </button>
+                <button
+                  className="u-button"
+                  onClick={() => handleUnsatisfying(user.id)}
+                >
+                  Not satisfying
+                </button>
               </div>
             </div>
-          ): user.status === "NOT_SATISFYING" ? <div>
-          <button className="dropdown-btn-n">Not satisfying</button>
-          <div className="dropdown-content">
-            <button className="s-button" onClick={() =>handleSatisfying(user.id)}>Satisfying</button>
-            <button className="u-button" onClick={() =>handleUnsatisfying(user.id)}>Not satisfying</button>
-          </div>
-        </div>: user.status === "NOT_RATED" ? <div>
-          <button className="dropdown-btn">Rate this cleaning</button>
-          <div className="dropdown-content">
-            <button className="s-button" onClick={() =>handleSatisfying(user.id)}>Satisfying</button>
-            <button className="u-button" onClick={() =>handleUnsatisfying(user.id)}>Not satisfying</button>
-          </div>
-        </div>: <></>}
-          
+          ) : user.status === "NOT_SATISFYING" || user.status === null ? (
+            <div>
+              <button className="dropdown-btn-n">Not satisfying</button>
+              <div className="dropdown-content">
+                <button
+                  className="s-button"
+                  onClick={() => handleSatisfying(user.id)}
+                >
+                  Satisfying
+                </button>
+                <button
+                  className="u-button"
+                  onClick={() => handleUnsatisfying(user.id)}
+                >
+                  Not satisfying
+                </button>
+              </div>
+            </div>
+          ) : user.status === "SATISFYING" || user.status === null ? (
+            <div>
+              <button className="dropdown-btn-s">SATISFYING</button>
+              <div className="dropdown-content">
+                <button
+                  className="s-button"
+                  onClick={() => handleSatisfying(user.id)}
+                >
+                  Satisfying
+                </button>
+                <button
+                  className="u-button"
+                  onClick={() => handleUnsatisfying(user.id)}
+                >
+                  Not satisfying
+                </button>
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
-      
-        {/* <div>
 
-          <Button onClick={handleOpen}>Edit</Button>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={state.gilad}
-                onChange={handleChange}
-                name="gilad"
-              />
-            }
-            label="Booking Status"
-          />
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Update Todo
-              </Typography>
-              <Box
-                component="form"
-                sx={{
-                  "& > :not(style)": { m: 1, width: "25ch" },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField
-                  id="euname"
-                  label="username"
-                  value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
-                />
-                <TextField
-                  id="eaddress"
-                  label="CustomerAdress"
-                  value={customerAddress}
-                  onChange={(e) => setCustomerAddress(e.target.value)}
-                />
-                <TextField
-                  id="edate"
-                  label="CleaningDate"
-                  value={cleaningDate}
-                  onChange={(e) => setCleaningDate(e.target.value)}
-                />
-                <TextField
-                  id="etime"
-                  label="CustomerTime"
-                  value={cleaningTime}
-                  onChange={(e) => setCleaningTime(e.target.value)}
-                />
+        {
+          <div>
+            <Button className="editButton" onClick={handleOpen}>
+              Edit
+            </Button>
+
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Update Todo
+                </Typography>
+                <Box
+                  component="form"
+                  sx={{
+                    "& > :not(style)": { m: 1, width: "25ch" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    id="euname"
+                    label="username"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                  />
+                  <TextField
+                    id="eaddress"
+                    label="CustomerAdress"
+                    value={customerAddress}
+                    onChange={(e) => setCustomerAddress(e.target.value)}
+                  />
+                  <TextField
+                    id="edate"
+                    label="CleaningDate"
+                    value={cleaningDate}
+                    onChange={(e) => setCleaningDate(e.target.value)}
+                  />
+                  <TextField
+                    id="etime"
+                    label="CustomerTime"
+                    value={cleaningTime}
+                    onChange={(e) => setCleaningTime(e.target.value)}
+                  />
+                </Box>
+
+                <br></br>
+                <Button onClick={() => handleUpdate(user.id)}>update</Button>
+                <Button ref={refClose} onClick={handleClose}>
+                  close
+                </Button>
               </Box>
-
-              <br></br>
-              <Button onClick={() => handleUpdate(user.id)}>update</Button>
-              <Button ref={refClose} onClick={handleClose}>
-                close
-              </Button>
-            </Box>
-          </Modal>
-        </div> */}
+            </Modal>
+          </div>
+        }
       </div>
       <button className="cancel-button" onClick={() => handleDelete(user.id)}>
         Cancel booking{" "}

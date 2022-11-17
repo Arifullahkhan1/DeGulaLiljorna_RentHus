@@ -28,6 +28,7 @@ const Customer = (props) => {
      
   
    const fetchCustomers = async () => {
+    if(customer!=null){
       let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/customer/${customer?.id}`,
         {
          
@@ -46,7 +47,7 @@ const Customer = (props) => {
       catch(error){
         console.log(error);
       }
-    
+    }
     
     };
     fetchCustomers();

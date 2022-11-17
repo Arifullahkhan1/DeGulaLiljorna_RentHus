@@ -47,10 +47,11 @@
 }
 
 .dropdown-btn {
-    width: 150px;
+    width: 158px;
     padding: 8px;
     border: 1px #363636 solid;
     border-radius: 4px;
+    background-color: #5f5f5f;
 }
 
 .dropdown-btn-s {
@@ -87,11 +88,14 @@
 .s-button {
     border-radius: 4px;
     border: 1px #363636 solid;
+    background-color: #f0da32;
+    
 }
 
 .u-button {
     border-radius: 4px;
     border: 1px #363636 solid;
+    background-color: #f0da32;
 }
 
 .u-button:hover {
@@ -109,6 +113,20 @@
 }
 
 .dropdown:hover .dropdown-btn {
-    background-color: #d1d1d1;
+    background-color: #f0da32;
     cursor: default;
+}
+.editButton{
+    background-color: #CBB26A !important;
+    border:#CBB26A inset 5px !important;
+    color: rgba(0, 0, 0, 0.953) !important;
+    margin-top: 5px !important;
+    
+}
+.ditButton:hover {background-color:#f8be0e !important}
+
+.ditButton:active {
+  background-color:#CBB26A !important;
+  box-shadow: 0 5px #f8be0e !important;
+  transform: translateY(4px) !important;
 }

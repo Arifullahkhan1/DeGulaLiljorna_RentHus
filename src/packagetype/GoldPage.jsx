@@ -38,6 +38,7 @@ export default function GoldPage(props) {
           cleaningTime: cleaningTime,
           customerId: customer.id,
           cleanerId: cleanerId,
+          status:customer.status,
         }),
       }
     );
