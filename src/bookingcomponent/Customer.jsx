@@ -28,7 +28,6 @@ const Customer = (props) => {
      
   
    const fetchCustomers = async () => {
-    if(customer!=null){
       let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/customer/${customer?.id}`,
         {
          
@@ -36,18 +35,18 @@ const Customer = (props) => {
             method: "GET",
             Authorization: `Bearer ${customer?.token}`
           }
+        );
+        let customers = [];
+        try{
+          customers = await response.json();
+          setCustomers(customers);
+          localStorage.setItem("customers", JSON.stringify(customers)); 
         }
-      );
-      let customers = [];
-      try{
-        customers = await response.json();
-        setCustomers(customers);
-        localStorage.setItem("customers", JSON.stringify(customers)); 
+        catch(error){
+          console.log(error);
+        }
       }
-      catch(error){
-        console.log(error);
-      }
-    }
+    
     
     };
     fetchCustomers();
