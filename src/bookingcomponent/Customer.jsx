@@ -24,7 +24,7 @@ const Customer = (props) => {
 
     if (localStorage.getItem("customers") !== null && localStorage.getItem("customers")?.length > 0 ) {
       setCustomers(JSON.parse(localStorage.getItem("customers")));
-      }
+    }
      
   
    const fetchCustomers = async () => {
@@ -39,19 +39,20 @@ const Customer = (props) => {
       );
       let customers = [];
       try{
-      customers = await response.json();
-      setCustomers(customers);
-      localStorage.setItem("customers", JSON.stringify(customers)); 
-    }
-     catch(error){
-      console.log(error);     }
+        customers = await response.json();
+        setCustomers(customers);
+        localStorage.setItem("customers", JSON.stringify(customers)); 
+      }
+      catch(error){
+        console.log(error);
+      }
     
     
     };
-        fetchCustomers();
+    fetchCustomers();
 
         
-     },[customer]);
+  },[customer]);
 
     // console.log("the customers: ",customers);
   return (

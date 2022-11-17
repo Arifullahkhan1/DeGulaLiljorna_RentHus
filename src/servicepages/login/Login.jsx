@@ -42,7 +42,7 @@ export default function Login(props) {
   return (
     <>
       <div className="login">
-        <span className="loginTitle">Login</span>
+        <span className="loginTitle">Log in</span>
         <form className="loginForm">
           <label>Username</label>
           <input
@@ -63,7 +63,7 @@ export default function Login(props) {
           />
 
           <button className="loginButton" onClick={handleLogin}>
-            Login
+            Log in
           </button>
         </form>
       </div>

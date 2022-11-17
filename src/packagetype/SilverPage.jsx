@@ -61,7 +61,7 @@ export default function SilverPage(props) {
     if (e >= maxTime) {
       return <div className="invalid">invalid time</div>;
     } else {
-      return <div>{e}</div>;
+      return <span>{e}</span>;
     }
   };
 
@@ -71,39 +71,44 @@ export default function SilverPage(props) {
       <span>Price: {price}kr</span>
 
       <form>
-        <div>CleaningDate</div>
-        <DatePicker
-          selected={cleaningDate}
-          onChange={(date) => setCleaningDate(date)}
-          value={cleaningDate}
-          minDate={new Date()}
-          maxDate={new Date("12/31/2022")}
-          filterDate={(date) => date.getDay() !== 0}
-          dateFormat="yyyy/MM/dd"
-        />
-        <div>Date: {cleaningDate.toDateString()}</div>
+        <div className="form-date">
+          <div>Cleaning Date</div>
+          <DatePicker
+            selected={cleaningDate}
+            onChange={(date) => setCleaningDate(date)}
+            value={cleaningDate}
+            minDate={new Date()}
+            maxDate={new Date("12/31/2022")}
+            filterDate={(date) => date.getDay() !== 0}
+            dateFormat="yyyy/MM/dd"
+          />
+          <div>Date: {cleaningDate.toDateString()}</div>
+        </div>
+        <div className="form-time">
+          <div>Cleaning Time</div>
 
-        <div>CleaningTime</div>
-
-        <TimePicker
-          onChange={setCleaningTime}
-          value={cleaningTime}
-          format="HH:mm"
-        />
-        <span>Time: {handleDate(cleaningTime)}</span>
-        <div>CleanerId</div>
-        <input
-          className="input"
-          placeholder="CleanerId..."
-          onChange={(e) => setCleanerId(e.target.value)}
-          value={cleanerId}
-        />
+          <TimePicker
+            onChange={setCleaningTime}
+            value={cleaningTime}
+            format="HH:mm"
+          />
+          <div></div>
+          <span>Time: {handleDate(cleaningTime)}</span>
+        </div>
+        <div className="form-cleaner">
+          <div>Cleaner ID</div>
+          <input
+            className="input"
+            placeholder="Cleaner ID..."
+            onChange={(e) => setCleanerId(e.target.value)}
+            value={cleanerId}
+          />
+        </div>
       </form>
-
       <br />
       <br />
       <button className="reserveButton" onClick={handleSave}>
-        Reserve
+        Book
       </button>
       <div className="pakage_info">
         {" "}

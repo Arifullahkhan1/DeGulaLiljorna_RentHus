@@ -63,52 +63,56 @@ export default function BronzePage(props) {
             return (<div className="invalid" >invalid time</div>);
         }
         else {
-            return (<div>{e}</div>);
+            return (<span>{e}</span>);
         }
     }
 
 
     return (
-
         <div className="confirmorder">
-      <h2>{typePackage}</h2>
-      <span>Price: {price}kr</span>
-
-      <form>
-        <div>CleaningDate</div>
-        <DatePicker
-          selected={cleaningDate}
-          onChange={(date) => setCleaningDate(date)}
-          value={cleaningDate}
-          minDate={new Date()}
-          maxDate={new Date("12/31/2022")}
-          filterDate={(date) => date.getDay() !== 0}
-          dateFormat="yyyy/MM/dd"
-
-          
-        />
-        <div>Date: {cleaningDate.toDateString()}</div>
-
-        <div>CleaningTime</div>
-
-        <TimePicker
-          
-          onChange={setCleaningTime}
-                    value={cleaningTime}
-                    format="HH:mm"
-        />
-        <span>Time: {handleDate(cleaningTime)}</span>
-        <div>CleanerId</div>
-        <input
-          className="input"
-          placeholder="CleanerId..."
-          onChange={(e) => setCleanerId(e.target.value)}
-          value={cleanerId}
-        />
-      </form>
-
-            <br /><br />
-            <button className="reserveButton" onClick={handleSave}>Reserve</button>
+        <h2>{typePackage}</h2>
+        <span>Price: {price}kr</span>
+  
+        <form>
+          <div className="form-date">
+            <div>Cleaning Date</div>
+            <DatePicker
+              selected={cleaningDate}
+              onChange={(date) => setCleaningDate(date)}
+              value={cleaningDate}
+              minDate={new Date()}
+              maxDate={new Date("12/31/2022")}
+              filterDate={(date) => date.getDay() !== 0}
+              dateFormat="yyyy/MM/dd"
+            />
+            <div>Date: {cleaningDate.toDateString()}</div>
+          </div>
+          <div className="form-time">
+            <div>Cleaning Time</div>
+  
+            <TimePicker
+              onChange={setCleaningTime}
+              value={cleaningTime}
+              format="HH:mm"
+            />
+            <div></div>
+            <span>Time: {handleDate(cleaningTime)}</span>
+          </div>
+          <div className="form-cleaner">
+            <div>Cleaner ID</div>
+            <input
+              className="input"
+              placeholder="Cleaner ID..."
+              onChange={(e) => setCleanerId(e.target.value)}
+              value={cleanerId}
+            />
+          </div>
+        </form>
+        <br />
+        <br />
+        <button className="reserveButton" onClick={handleSave}>
+          Book
+        </button>
             <div className="pakage_info">Our BRONZE Package has been designed for multiple cleaning visits per week or for partial cleaning visit. This packaged focuses on maintaining Bathrooms, Kitchen and One Extra room per visit. Our uniquely trained staff focus on a detail cleaning of the difficult area's in your home, while also maintaining your home on a room by room basis. The Bronze package allows you to constantly have a clean kitchen and bathrooms while cleaning a couple of rooms per week. Similar to our SILVER and GOLD package, you will have the choice of having us use our regular products or environmentally friendly products instead. This Package has our friendly trained staff visit your home for a 2 and half hour visit, start at ONLY 1000kr per visit.</div>
 
         </div>

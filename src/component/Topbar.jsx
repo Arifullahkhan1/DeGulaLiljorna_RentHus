@@ -56,7 +56,7 @@ export default function Topbar(props) {
               {customer && (
                 <li className="topListItem">
                   <Link className="link" to={"/"} onClick={handleLogedOut}>
-                    Logout
+                    Log out
                   </Link>
                 </li>
               )}
@@ -74,7 +74,7 @@ export default function Topbar(props) {
               <ul className="topList">
                 <li className="topListItem">
                   <Link className="link" to="/login">
-                    LOGIN
+                    LOG IN
                   </Link>
                 </li>
                 <li className="topListItem">

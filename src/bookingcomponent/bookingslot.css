@@ -1,8 +1,9 @@
 .container{
-display: flex;
-flex-direction: column;
-margin-left: 20px;
-align-items: left;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    align-items: left;
+
 
 }
 
@@ -11,14 +12,14 @@ align-items: left;
     border-radius: 10px;
     width: 20rem;
     height: auto;
-    padding-left: 20px;
+    padding: 20px;
     padding-top: 10px;
    
 }
 .text{
     text-align:justify;
 }
-.button{
+.cancel-button{
     margin-top: 20px;
     width:20rem;
     cursor: pointer;
@@ -32,10 +33,82 @@ align-items: left;
     font-size: large;
     
 }
-.button:hover {background-color:rgb(237,0,0)}
+.cancel-button:hover {background-color:rgb(237,0,0)}
 
-.button:active {
+.cancel-button:active {
   background-color:rgb(237, 0, 0);
   box-shadow: 0 5px #f8be0e;
   transform: translateY(4px);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    width: 150px;
+    padding: 8px;
+    border: 1px #363636 solid;
+    border-radius: 4px;
+}
+
+.dropdown-btn-s {
+    width: 150px;
+    padding: 8px;
+    border: 1px goldenrod solid;
+    border-radius: 4px;  
+    color: goldenrod;
+    background-color: #e4decc34;
+}
+
+.dropdown-btn-n {
+    width: 150px;
+    padding: 8px;
+    border: 1px rgb(181, 9, 9) solid;
+    border-radius: 4px;  
+    color: rgb(181, 9, 9);
+    background-color: #e4decc34; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    background-color: #5f5f5f;
+    min-width: 160px;
+    z-index: 1;
+     
+}
+
+.s-button:hover {
+    background-color: green;
+}
+.s-button {
+    border-radius: 4px;
+    border: 1px #363636 solid;
+}
+
+.u-button {
+    border-radius: 4px;
+    border: 1px #363636 solid;
+}
+
+.u-button:hover {
+    background-color: red;
+}
+
+/* .dropdown-content button:hover {
+    background-color: #4d4d4d;
+
+} */
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-btn {
+    background-color: #d1d1d1;
+    cursor: default;
 }

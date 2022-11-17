@@ -55,7 +55,7 @@ function App() {
             element={
               <GoldPage
                 customer={customer}
-                typePackage="GoldPackage"
+                typePackage="Gold Package"
                 price="3000"
               />
             }
@@ -66,7 +66,7 @@ function App() {
             element={
               <SilverPage
                 customer={customer}
-                typePackage="SilverPackage"
+                typePackage="Silver Package"
                 price="2000"
               />
             }
@@ -77,7 +77,7 @@ function App() {
             element={
               <BronzePage
                 customer={customer}
-                typePackage="BronzePackage"
+                typePackage="Bronze Package"
                 price="1000"
               />
             }

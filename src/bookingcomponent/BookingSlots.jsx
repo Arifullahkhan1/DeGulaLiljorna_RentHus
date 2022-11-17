@@ -42,12 +42,25 @@ export default function BookingSlots(props) {
   const refClose = useRef(null);
   //*************************** */
 
-  const handleChange = (event) => {
+  /* const handleChange = (event) => {
     setState({
       ...state,
       [event.target.name]: event.target.checked,
     });
-  };
+  }; */
+
+  const refreshBookings = async () => {
+    let response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/api/customer/${customer.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${customer.token}`,
+        },
+      }
+    );
+    let customers = await response.json();
+    setCustomers(customers);
+  }
 
   const handleDelete = async (id) => {
     localStorage.removeItem("customers");
@@ -58,20 +71,11 @@ export default function BookingSlots(props) {
       },
     });
     
-    let response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/customer/${customer.id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${customer.token}`,
-        },
-      }
-    );
-    let customers = await response.json();
-    //console.log(customers);
-    setCustomers(customers);
+    refreshBookings();
   };
-  // Declear and call of put
-  const hadleUpdate = async (id) => {
+  
+  // Declare and call of put
+  /* const handleUpdate = async (id) => {
     refClose.current.click();
 
     await fetch(`${process.env.REACT_APP_BASE_URL}/api/bookingslot/${id}`, {
@@ -88,19 +92,39 @@ export default function BookingSlots(props) {
       }),
     });
 
-    let response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/customer/${customer.id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${customer.token}`,
-        },
-      }
-    );
-    let customers = await response.json();
-          
-          
-    setCustomers(customers);
+    refreshBookings();
+  }; */
+
+  const handleSatisfying = async (id) => {
+    
+    await fetch(`${process.env.REACT_APP_BASE_URL}/api/bookingslot/rate/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${customer.token}`,
+      },
+      body: JSON.stringify({
+        status: "SATISFYING"
+      }),
+    });
+
+    refreshBookings();
   };
+
+  const handleUnsatisfying = async (id) => {
+    await fetch(`${process.env.REACT_APP_BASE_URL}/api/bookingslot/rate/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${customer.token}`,
+      },
+      body: JSON.stringify({
+        status: "NOT_SATISFYING"
+      }),
+    });
+
+    refreshBookings();
+  }
 
   return (
     <div className="container">
@@ -109,14 +133,37 @@ export default function BookingSlots(props) {
           <h4>Name: {user.customerName}</h4>
           <p>Address: {user.customerAddress}</p>
           <p>Date: {user.cleaningDate}</p>
-          <p>Time:{user.cleaningTime}</p>
-          <p>Type:{user.typePackage}</p>
-          <p>Price:{user.price}</p>
-         
+          <p>Time: {user.cleaningTime}</p>
+          <p>Type: {user.typePackage}</p>
+          <p>Price: {user.price} kr</p>
+        
         </div>
-       
-        <div>
-          {/* Mattarial Ui Mpdel*/}
+        <div className="dropdown">
+          {user.status === "SATISFYING" ? (
+            <div>
+              <button className="dropdown-btn-s">Satisfying</button>
+              <div className="dropdown-content">
+                <button className="s-button" onClick={() =>handleSatisfying(user.id)}>Satisfying</button>
+                <button className="u-button" onClick={() =>handleUnsatisfying(user.id)}>Not satisfying</button>
+              </div>
+            </div>
+          ): user.status === "NOT_SATISFYING" ? <div>
+          <button className="dropdown-btn-n">Not satisfying</button>
+          <div className="dropdown-content">
+            <button className="s-button" onClick={() =>handleSatisfying(user.id)}>Satisfying</button>
+            <button className="u-button" onClick={() =>handleUnsatisfying(user.id)}>Not satisfying</button>
+          </div>
+        </div>: user.status === "NOT_RATED" ? <div>
+          <button className="dropdown-btn">Rate this cleaning</button>
+          <div className="dropdown-content">
+            <button className="s-button" onClick={() =>handleSatisfying(user.id)}>Satisfying</button>
+            <button className="u-button" onClick={() =>handleUnsatisfying(user.id)}>Not satisfying</button>
+          </div>
+        </div>: <></>}
+          
+        </div>
+      
+        {/* <div>
 
           <Button onClick={handleOpen}>Edit</Button>
           <FormControlLabel
@@ -174,15 +221,15 @@ export default function BookingSlots(props) {
               </Box>
 
               <br></br>
-              <Button onClick={() => hadleUpdate(user.id)}>update</Button>
+              <Button onClick={() => handleUpdate(user.id)}>update</Button>
               <Button ref={refClose} onClick={handleClose}>
                 close
               </Button>
             </Box>
           </Modal>
-        </div>
+        </div> */}
       </div>
-      <button className="button" onClick={() => handleDelete(user.id)}>
+      <button className="cancel-button" onClick={() => handleDelete(user.id)}>
         Cancel booking{" "}
       </button>
     </div>

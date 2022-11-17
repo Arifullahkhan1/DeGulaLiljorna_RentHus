@@ -7,23 +7,33 @@
 }
 
 .input {
-  background-color: #958f8fce;
-  opacity: 0.6;
-  color: white;
+  background-color: white;
+  /* opacity: 0.6; */
+  color: black !important;
   padding: 5px;
   border: none;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
-input::placeholder {
+
+.form-date {
+  margin-bottom: 10px;
+}
+.form-time {
+  margin-bottom: 10px;
+}
+
+/* input::placeholder {
   color: #cbb26a;
   opacity: 1;
-}
+} */
+
 .reserveButton {
   background-color: #CBB26A;
     border:#CBB26A inset 5px ;
     color: rgba(0, 0, 0, 0.953);
     
 }
+
 .reserveButton:hover {background-color:#f8be0e}
 
 .reserveButton:active {
@@ -44,6 +54,7 @@ input::placeholder {
   font-size: medium;
   align-items: center;
 }
+
 .pakage_info {
   display: flex;
 
@@ -59,31 +70,47 @@ input::placeholder {
   background-color: #434446;
   color: #cbb26a;
 }
+
 .about {
   margin-top: 360px !important;
   margin-left: 700px;
 }
+
 .contact {
   width: 800px  !important;
   margin-left: 600px !important;
   
   margin-top: 360px !important;
   padding-left: 240px !important;
-  
- 
-  }
+}
+
 .list{
   list-style-type: none;
 }
+
 .address{
   margin-left: -315px;
 }
+
 .callus{
   margin-left: 5px;
 }
+
+.react-time-picker__wrapper {
+  background-color: white;
+  
+}
+
+.react-time-picker__inputGroup *{
+  color: black !important;
+/*   font-size: large;
+  font-weight: bold; */
+}
+
 .react-time-picker__inputGroup__input:invalid {
   background: #ff00005e;
 }
+
 .invalid {
   color: #ff0000;
 }
