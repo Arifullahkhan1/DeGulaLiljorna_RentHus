@@ -69,7 +69,7 @@ export default function GoldPage(props) {
   return (
     <div className="confirmorder">
       <h2>{typePackage}</h2>
-      <span>Price: {price}kr</span>
+      <span>Price: {price} kr</span>
 
       <form>
         <div className="form-date">

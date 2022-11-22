@@ -3,64 +3,51 @@ import BookingSlots from "./BookingSlots";
 import "./customer.css";
 
 const Customer = (props) => {
-  const [customers, setCustomers] = useState(
-    [{
-      id: 0,
-      username: "username",
-      password: "password",
-      roles: ["USER"],
-    },]);
+  const [bookingSlots, setBookingSlots] = useState(
+    []);
      
- const {customer}=props
-
-
-
-
+  const {customer}=props
 
   useEffect(() => {
 
-    if (localStorage.getItem("customers") !== null && localStorage.getItem("customers")?.length > 0 ) {
-      setCustomers(JSON.parse(localStorage.getItem("customers")));
+    if (localStorage.getItem("bookingSlots") !== null && localStorage.getItem("bookingSlots")?.length > 0 ) {
+      setBookingSlots(JSON.parse(localStorage.getItem("bookingSlots")));
     }
-     
   
-   const fetchCustomers = async () => {
-    if(customer!=null){
-      let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/customer/${customer?.id}`,{
-         
+    const fetchBookingSlots = async () => {
+      if(customer!=null){
+        let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/customer/${customer?.id}`,{
+          
           headers: {
             method: "GET",
             Authorization: `Bearer ${customer?.token}`
           }
-          });
-       
-       
-         let customers = await response.json();
-          setCustomers(customers);
-          localStorage.setItem("customers", JSON.stringify(customers)); 
-       
+        });
+        
+        
+        let fetchedBookingSlots = await response.json();
+        setBookingSlots(fetchedBookingSlots);
+        localStorage.setItem("bookingSlots", JSON.stringify(fetchedBookingSlots)); 
+      }
       
-        }
-    
     };
 
-    fetchCustomers();
-
+    fetchBookingSlots();
         
   },[customer]);
 
-    // console.log("the customers: ",customers);
+  
   return (
     <>
     <div className="containe">
-      {customers.length > 0 ? customers.map((user) => (
+      {bookingSlots.length > 0 ? bookingSlots.map((bookingSlot) => (
         <BookingSlots
           customer={customer}
-          key={user.id}
-          user={user}
-          setCustomers={setCustomers}
+          key={bookingSlot.id}
+          bookingSlot={bookingSlot}
+          setBookingSlots={setBookingSlots}
         />
-      )):  <h1 className="msg">Its Empty</h1> }
+      )):  <h1 className="msg">It's Empty</h1> }
     </div>
   
 

@@ -24,7 +24,7 @@ const style = {
 //****** */
 
 export default function BookingSlots(props) {
-  const { user, setCustomers, customer } = props;
+  const { bookingSlot, setBookingSlots, customer } = props;
   const current = new Date();
   const date = `${current.getFullYear()}-${
     current.getMonth() + 1
@@ -33,14 +33,14 @@ export default function BookingSlots(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [cleaningDate, setCleaningDate] = useState(user.cleaningDate);
-  const [cleaningTime, setCleaningTime] = useState(user.cleaningTime);
-  const [customerName, setCustomerName] = useState(user.customerName);
-  const [customerAddress, setCustomerAddress] = useState(user.customerAddress);
+  const [cleaningDate, setCleaningDate] = useState(bookingSlot.cleaningDate);
+  const [cleaningTime, setCleaningTime] = useState(bookingSlot.cleaningTime);
+  const [customerName, setCustomerName] = useState(bookingSlot.customerName);
+  const [customerAddress, setCustomerAddress] = useState(bookingSlot.customerAddress);
   const refClose = useRef(null);
   //***************************
 
-  const refreshBookings = async () => {
+  const refreshBookingSlots = async () => {
     let response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/api/customer/${customer.id}`,
       {
@@ -49,12 +49,13 @@ export default function BookingSlots(props) {
         },
       }
     );
-    let customers = await response.json();
-    setCustomers(customers);
+    let fetchedBookingSlots = await response.json();
+    setBookingSlots(fetchedBookingSlots);
+    localStorage.setItem("bookingSlots", JSON.stringify(fetchedBookingSlots));
   };
 
   const handleDelete = async (id) => {
-    localStorage.removeItem("customers");
+    localStorage.removeItem("bookingSlots");
     await fetch(`${process.env.REACT_APP_BASE_URL}/api/bookingslot/${id}`, {
       method: "DELETE",
       headers: {
@@ -62,7 +63,7 @@ export default function BookingSlots(props) {
       },
     });
 
-    refreshBookings();
+    refreshBookingSlots();
   };
 
   // Declare and call of put
@@ -83,7 +84,7 @@ export default function BookingSlots(props) {
       }),
     });
 
-    refreshBookings();
+    refreshBookingSlots();
   };
 
   const handleSatisfying = async (id) => {
@@ -101,7 +102,7 @@ export default function BookingSlots(props) {
       }
     );
 
-    refreshBookings();
+    refreshBookingSlots();
   };
 
   const handleUnsatisfying = async (id) => {
@@ -119,73 +120,73 @@ export default function BookingSlots(props) {
       }
     );
 
-    refreshBookings();
+    refreshBookingSlots();
   };
 
   return (
     <div className="container">
       <div className="content">
         <div className="text">
-          <h4>Name: {user.customerName}</h4>
-          <p>Address: {user.customerAddress}</p>
-          <p>Date: {user.cleaningDate}</p>
-          <p>Time: {user.cleaningTime}</p>
-          <p>Type: {user.typePackage}</p>
-          <p>Price: {user.price} kr</p>
+          <h4>Name: {bookingSlot.customerName}</h4>
+          <p>Address: {bookingSlot.customerAddress}</p>
+          <p>Date: {bookingSlot.cleaningDate}</p>
+          <p>Time: {bookingSlot.cleaningTime}</p>
+          <p>Type: {bookingSlot.typePackage}</p>
+          <p>Price: {bookingSlot.price} kr</p>
         </div>
 
         <div className="dropdown">
-          {user.cleaningDate >= date ? (
-            <div>no reating</div>
-          ) : user.status === "NOT_RATED" || user.status === null ? (
+          {bookingSlot.cleaningDate >= date ? (
+            <></>
+          ) : bookingSlot.status === "NOT_RATED" || bookingSlot.status === null ? (
             <div>
               <button className="dropdown-btn">Rate This Cleaning</button>
               <div className="dropdown-content">
                 <button
                   className="s-button"
-                  onClick={() => handleSatisfying(user.id)}
+                  onClick={() => handleSatisfying(bookingSlot.id)}
                 >
                   Satisfying
                 </button>
                 <button
                   className="u-button"
-                  onClick={() => handleUnsatisfying(user.id)}
+                  onClick={() => handleUnsatisfying(bookingSlot.id)}
                 >
                   Not satisfying
                 </button>
               </div>
             </div>
-          ) : user.status === "NOT_SATISFYING" || user.status === null ? (
+          ) : bookingSlot.status === "NOT_SATISFYING" || bookingSlot.status === null ? (
             <div>
               <button className="dropdown-btn-n">Not satisfying</button>
               <div className="dropdown-content">
                 <button
                   className="s-button"
-                  onClick={() => handleSatisfying(user.id)}
+                  onClick={() => handleSatisfying(bookingSlot.id)}
                 >
                   Satisfying
                 </button>
                 <button
                   className="u-button"
-                  onClick={() => handleUnsatisfying(user.id)}
+                  onClick={() => handleUnsatisfying(bookingSlot.id)}
                 >
                   Not satisfying
                 </button>
               </div>
             </div>
-          ) : user.status === "SATISFYING" || user.status === null ? (
+          ) : bookingSlot.status === "SATISFYING" || bookingSlot.status === null ? (
             <div>
               <button className="dropdown-btn-s">SATISFYING</button>
               <div className="dropdown-content">
                 <button
                   className="s-button"
-                  onClick={() => handleSatisfying(user.id)}
+                  onClick={() => handleSatisfying(bookingSlot.id)}
                 >
                   Satisfying
                 </button>
                 <button
                   className="u-button"
-                  onClick={() => handleUnsatisfying(user.id)}
+                  onClick={() => handleUnsatisfying(bookingSlot.id)}
                 >
                   Not satisfying
                 </button>
@@ -247,7 +248,7 @@ export default function BookingSlots(props) {
                 </Box>
 
                 <br></br>
-                <Button onClick={() => handleUpdate(user.id)}>update</Button>
+                <Button onClick={() => handleUpdate(bookingSlot.id)}>update</Button>
                 <Button ref={refClose} onClick={handleClose}>
                   close
                 </Button>
@@ -256,7 +257,7 @@ export default function BookingSlots(props) {
           </div>
         }
       </div>
-      <button className="cancel-button" onClick={() => handleDelete(user.id)}>
+      <button className="cancel-button" onClick={() => handleDelete(bookingSlot.id)}>
         Cancel booking{" "}
       </button>
     </div>
