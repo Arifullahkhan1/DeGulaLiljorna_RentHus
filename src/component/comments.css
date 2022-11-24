@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap");
+
+
+
+
+
+.main-div .child-div .todolog {
+  font-size: 100px;
+  color: rgba(255, 255, 0, 0.671);
+}
+.main-div .child-div h1 {
+  color: white;
+}
+
+.main-div .child-div .input {
+  width: 100%;
+  justify-content: center;
+}
+.main-div .child-div .input input {
+  margin-top: 10px;
+  width: 300px;
+  height: 35px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+.main-div .child-div .input button {
+  height: 35px;
+  width: 50px;
+}
+
+.main-div .child-div .showitems {
+   
+    height: 50px;
+    width: 270px;
+    margin-left: 6px;
+    font-size: 20px;
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 7px !important;
+    border: 1px solid gold;
+
+}
+
+.main-div .child-div .showitems h3{
+  margin-left: 3px;
+}
+
+.main-div .child-div .showitems .delete {
+  height: 35px;
+  width: 200px;
+  background-color:rgb(102, 231, 154);
+  border: none;
+  color: rgb(208, 10, 10);
+}
+
+.main-div .child-div .showitems .edit {
+  height: 35px;
+  width: 200px;
+  margin-left: 230px;
+  background-color:rgb(102, 231, 154);
+  border: none;
+  color: white;
+}
+
+.main-div .child-div .button .btn-secondary {
+  height: 33px;
+  font-size: 15px;
+  margin-top: -2px;
+}
+.feedback{
+  width: 100% !important;
+  color: #CBB26A;
+}
+.editbth{
+  margin-left: 180px !important;
+}
+.plusbtn{
+  margin-top: 3px !important;
+  background-color: #CBB26A;
+    border:#CBB26A inset 5px ;
+    color: rgba(0, 0, 0, 0.953);
+   justify-content: center;
+   display: flex;
+    
+}
+.myinput{
+  border:#CBB26A inset 5px !important ;
+  background-color: red !important;
+
+}

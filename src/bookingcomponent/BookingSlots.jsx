@@ -1,4 +1,5 @@
 import "./bookingslot.css";
+import Comments from "../component/Comments"
 
 //mattiral ui class
 
@@ -8,6 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
+
 
 const style = {
   position: "absolute",
@@ -133,6 +135,9 @@ export default function BookingSlots(props) {
           <p>Time: {bookingSlot.cleaningTime}</p>
           <p>Type: {bookingSlot.typePackage}</p>
           <p>Price: {bookingSlot.price} kr</p>
+          <>
+          {bookingSlot.cleaningDate >= date ?<></>:<Comments/>}
+          </>
         </div>
 
         <div className="dropdown">
