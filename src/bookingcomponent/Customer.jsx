@@ -5,7 +5,7 @@ import "./customer.css";
 const Customer = (props) => {
   const [bookingSlots, setBookingSlots] = useState(
     []);
-     
+     // final version to push
   const {customer}=props
 
   useEffect(() => {
